@@ -112,13 +112,29 @@ public class Produto implements Serializable {
 		this.dataFabricacao = dataFabricacao;
 	}
 
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	// Anotação que define que um método será reescrito
-		// Esse método serve para "imprimir" o conteúdo de um objeto
-		@Override
+	// Esse método serve para "imprimir" o conteúdo de um objeto
+	@Override
 	public String toString() {
 		return "Produto [codigo=" + codigo + ", codigoBarra=" + codigoBarra
 				+ ", descricao=" + descricao + ", quantidade=" + quantidade
 				+ ", valor=" + valor + ", dataFabricacao=" + dataFabricacao
 				+ ", ativo=" + ativo + ", categoria=" + categoria + "]";
-	}	
+	}
 }
