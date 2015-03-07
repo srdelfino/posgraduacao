@@ -20,7 +20,7 @@
 		<property name="format_sql">true</property>
 
 		<!-- Cria as tabelas -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">validate</property>
 		
 		<!-- Mapeamentos -->
 		<mapping class="br.com.drogaria.domain.Categoria" />

@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 
 @SuppressWarnings("serial")
 @Entity
-@SequenceGenerator(name = "categoriaSequence", sequenceName = "categoriaSequence")
+@SequenceGenerator(name = "categoriaSequence", sequenceName = "categoriaSequence", allocationSize = 1)
 public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoriaSequence")
@@ -36,5 +36,10 @@ public class Categoria implements Serializable {
 	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoria [codigo=" + codigo + ", descricao=" + descricao + "]";
 	}
 }

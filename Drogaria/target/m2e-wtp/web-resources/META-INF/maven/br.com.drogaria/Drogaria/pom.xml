@@ -6,17 +6,24 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- Codificação dos caracteres -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<!-- Parâmetros de execução -->
 	<build>
+		<!-- Nome do projeto -->
 		<finalName>Drogaria</finalName>
+		
+		<!-- Compilador do Maven -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
+				
+				<!-- Versão do Java -->
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -25,7 +32,9 @@
 		</plugins>
 	</build>
 
+	<!-- Repositórios -->
 	<repositories>
+		<!-- PrimeFaces -->
 		<repository>
 			<id>prime-repo</id>
 			<name>PrimeFaces Maven Repository</name>
@@ -34,49 +43,58 @@
 		</repository>
 	</repositories>
 
+	<!-- Dependências -->
 	<dependencies>
+		<!-- Framework de Persistência -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.8.Final</version>
 		</dependency>
 
+		<!-- Driver JDBC -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1201-jdbc41</version>
 		</dependency>
 
+		<!-- Framework de Testes -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
 
+		<!-- Framework MVC -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
 			<version>2.2.10</version>
 		</dependency>
 
+		<!-- Framework de Componentes -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>5.1</version>
 		</dependency>
 
+		<!-- Temas do PrimeFaces -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>
 		</dependency>
 
+		<!-- WebService -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet</artifactId>
 			<version>2.16</version>
 		</dependency>
 
+		<!-- Interpretador JSON -->
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>

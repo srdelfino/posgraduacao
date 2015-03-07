@@ -9,7 +9,6 @@ import br.com.drogaria.domain.Categoria;
 
 public class CategoriaDAOTest {
 	@Test
-	@Ignore
 	public void salvar() {
 		// Cria o objeto que irá receber os dados
 		Categoria categoria = new Categoria();
@@ -38,12 +37,13 @@ public class CategoriaDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void buscar() {
 		// Cria o objeto que permite chamar ações do banco de dados
 		CategoriaDAO dao = new CategoriaDAO();
 
 		// Realiza a consulta e armazena o resultado em um objeto
-		Categoria categoria = dao.buscar(50);
+		Categoria categoria = dao.buscar(1);
 
 		// Imprime o resultado da consulta
 		System.out.println(categoria);

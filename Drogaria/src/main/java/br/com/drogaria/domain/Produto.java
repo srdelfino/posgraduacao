@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 // Anotação que define o nome da sequência que irá gerar a chave primária. 
 @SuppressWarnings("serial")
 @Entity
-@SequenceGenerator(name = "produtoSequence", sequenceName = "produtoSequence")
+@SequenceGenerator(name = "produtoSequence", sequenceName = "produtoSequence", allocationSize = 1)
 public class Produto implements Serializable {
 	// Anotação que define qual atributo será a chave primária
 	// Anotação que define qual sequência irá gerar a chave primária
