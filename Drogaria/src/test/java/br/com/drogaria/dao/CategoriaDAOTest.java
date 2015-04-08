@@ -9,6 +9,7 @@ import br.com.drogaria.domain.Categoria;
 
 public class CategoriaDAOTest {
 	@Test
+	@Ignore
 	public void salvar() {
 		// Cria o objeto que irá receber os dados
 		Categoria categoria = new Categoria();

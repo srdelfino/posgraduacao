@@ -41,6 +41,7 @@ public class ProdutoDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void listar() {
 		// Cria o objeto que permite chamar ações do banco de dados
 		ProdutoDAO dao = new ProdutoDAO();
@@ -66,6 +67,7 @@ public class ProdutoDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void editar() {
 		// Cria o objeto que permite chamar ações do banco de dados
 		CategoriaDAO categoriaDAO = new CategoriaDAO();

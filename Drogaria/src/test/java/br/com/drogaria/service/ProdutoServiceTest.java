@@ -17,7 +17,10 @@ import org.junit.Test;
 import br.com.drogaria.domain.Produto;
 
 public class ProdutoServiceTest {
+	// Define o endereço do serviço
 	private static final String REST_SERVICE_URL = "http://localhost:8080/Drogaria/rest/produto";
+	
+	// Cria um cliente
 	private static final Client client = ClientBuilder.newClient().register(
 			JacksonFeature.class);
 
@@ -53,6 +56,7 @@ public class ProdutoServiceTest {
 	}
 	
 	@Test
+	@Ignore
 	public void buscar() {
 		Integer codigo = 170;
 		
