@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Drogaria</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" header="SiGDro - Produtos" />
+		
+		<p:layoutUnit position="west">
+			<ui:include src="/includes/menu.xhtml" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form id="formulario">
+				<p:growl id="mensagem" />
+
+				<h:panelGrid id="painelDados" columns="6">
+					<p:outputLabel value="Código:" />
+					<p:inputText size="10" readonly="true"
+						value="#{produtoBean.produto.codigo}" />
+
+					<p:outputLabel value="Código de Barra:" />
+					<p:inputText size="20" maxlength="13"
+						value="#{produtoBean.produto.codigoBarra}" />
+
+					<p:outputLabel value="Descrição:" />
+					<p:inputText size="30" maxlength="50"
+						value="#{produtoBean.produto.descricao}" />
+
+					<p:outputLabel value="Quantidade:" />
+					<p:inputText size="10" maxlength="5"
+						value="#{produtoBean.produto.quantidade}" />
+
+					<p:outputLabel value="Valor:" />
+					<p:inputText size="15" maxlength="10"
+						value="#{produtoBean.produto.valor}" />
+
+					<p:outputLabel value="Data de Fabricação:" />
+					<p:calendar value="#{produtoBean.produto.dataFabricacao}" />
+
+					<p:outputLabel value="Ativo:" />
+					<p:selectBooleanCheckbox value="#{produtoBean.produto.ativo}" />
+
+					<p:outputLabel value="Categoria:" />
+					<p:selectOneMenu value="#{produtoBean.produto.categoria}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Selecione uma categoria" />
+						<f:selectItems value="#{produtoBean.categorias}" var="catCursor"
+							itemValue="#{catCursor}" itemLabel="#{catCursor.descricao}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+
+				<h:panelGrid columns="4">
+					<p:commandButton value="Incluir"
+						actionListener="#{produtoBean.incluir}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Limpar"
+						actionListener="#{produtoBean.iniciar}"
+						update=":formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Excluir"
+						actionListener="#{produtoBean.excluir}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Editar"
+						actionListener="#{produtoBean.editar}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+				</h:panelGrid>
+
+				<p:separator />
+
+				<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+					paginator="true" rows="5" value="#{produtoBean.produtos}"
+					var="proCursor">
+					<p:column headerText="Código">
+						<h:outputText value="#{proCursor.codigo}" />
+					</p:column>
+					<p:column headerText="Cód. Barra">
+						<h:outputText value="#{proCursor.codigoBarra}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{proCursor.descricao}" />
+					</p:column>
+					<p:column headerText="Categoria">
+						<h:outputText value="#{proCursor.categoria.descricao}" />
+					</p:column>
+					<p:column headerText="Opções">
+						<p:commandButton value="Selecionar" update=":formulario:painelDados">
+							<f:setPropertyActionListener target="#{produtoBean.produto}"
+								value="#{proCursor}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

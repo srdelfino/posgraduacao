@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Drogaria</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" header="SiGDro - Categorias" />
+		
+		<p:layoutUnit position="west">
+			<ui:include src="/includes/menu.xhtml" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form id="formulario">
+				<p:growl id="mensagem" />
+
+				<h:panelGrid id="painelDados" columns="2">
+					<p:outputLabel value="Código:" />
+					<p:inputText size="10" readonly="true"
+						value="#{categoriaBean.categoria.codigo}" />
+
+					<p:outputLabel value="Descrição:" />
+					<p:inputText size="30" maxlength="50"
+						value="#{categoriaBean.categoria.descricao}" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="4">
+					<p:commandButton value="Incluir"
+						actionListener="#{categoriaBean.incluir}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Limpar"
+						actionListener="#{categoriaBean.iniciar}"
+						update=":formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Excluir"
+						actionListener="#{categoriaBean.excluir}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Editar"
+						actionListener="#{categoriaBean.editar}"
+						update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+				</h:panelGrid>
+
+				<p:separator />
+
+				<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+					paginator="true" rows="5" value="#{categoriaBean.categorias}"
+					var="cursor">
+					<p:column headerText="Código">
+						<h:outputText value="#{cursor.codigo}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{cursor.descricao}" />
+					</p:column>
+					<p:column headerText="Opções">
+						<p:commandButton value="Selecionar"
+							update=":formulario:painelDados">
+							<f:setPropertyActionListener target="#{categoriaBean.categoria}"
+								value="#{cursor}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

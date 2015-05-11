@@ -87,6 +87,13 @@
 			<version>1.0.10</version>
 		</dependency>
 
+		<!-- Utilitários para JSF -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.10</version>
+		</dependency>
+
 		<!-- WebService -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
